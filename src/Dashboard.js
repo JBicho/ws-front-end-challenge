@@ -4,6 +4,7 @@ import LaunchList from "./components/Launches/List/main";
 
 const Main = styled.main`
   max-width: 900px;
+  height: 100%;
   margin: 0 auto;
 `;
 
