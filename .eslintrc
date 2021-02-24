@@ -19,9 +19,8 @@
   },
   "plugins": ["react", "prettier", "jsx-a11y"],
   "globals": {
-    "globalThis": true,
     "document": false,
-    "window": false
+    "sessionStorage": false
   },
   "rules": {
     "template-curly-spacing": "off",
