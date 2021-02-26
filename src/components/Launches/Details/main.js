@@ -18,7 +18,6 @@ const Article = styled.article`
 const Header = styled.header`
   width: 100%;
   position: relative;
-  height: 400px;
 
   .slider {
     position: relative;
@@ -55,7 +54,6 @@ const Header = styled.header`
 
 const HeaderImage = styled.img`
   width: inherit;
-  position: absolute;
   height: inherit;
 `;
 
