@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { GENERAL_INFO } from "../../../graphQL/queries";
 import loadingIcon from "../../../images/LoadingIcon.svg";
@@ -42,7 +42,6 @@ const LoadingIcon = styled.div`
 
 function LaunchList() {
   const toast = useToast();
-  const [queryInfo, setQueryInfo] = useState(null);
   const { error, loading, data } = useQuery(GENERAL_INFO);
 
   useEffect(() => {
@@ -50,14 +49,14 @@ function LaunchList() {
       toast.setToastInfo(error.message);
     }
 
-    if (data && !queryInfo) {
+    if (data) {
       const { launchesPast } = data;
 
       // Store the launches info in sessionStorage to make it accessible throughout the app
-      sessionStorage.setItem("missionList", JSON.stringify(launchesPast));
-
-      // Storing data in state in case we need to make changes to it
-      setQueryInfo(launchesPast);
+      window.sessionStorage.setItem(
+        "missionList",
+        JSON.stringify(launchesPast)
+      );
     }
   }, [error, data]);
 
@@ -65,6 +64,7 @@ function LaunchList() {
     return (
       <LoadingIcon>
         <img src={loadingIcon} alt="loading animation" />
+        <h1>Loading</h1>
       </LoadingIcon>
     );
   }
@@ -78,8 +78,8 @@ function LaunchList() {
         </span>
       </h1>
       <List>
-        {queryInfo &&
-          queryInfo.map((mission, index) => (
+        {data.launchesPast &&
+          data.launchesPast.map((mission, index) => (
             <li key={index} className="list-item">
               <a className="list-item-anchor" href={`/mission/${index}`}>
                 <h2>{mission.mission_name}</h2>

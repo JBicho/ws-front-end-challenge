@@ -10,8 +10,7 @@ function ErrorPage() {
     <section>
       <ErrorMessage>
         <h1 className="message">
-          The page you requested does not exist or is unavailable at the moment.
-          <br />
+          The page you requested does not exist or is unavailable at the moment.{" "}
           Please refresh the page or try again in a bit.
         </h1>
       </ErrorMessage>

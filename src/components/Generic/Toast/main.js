@@ -16,11 +16,18 @@ const ToastContainer = styled.div`
 function Toast() {
   const toast = useToast();
 
+  if (!toast) {
+    return <div></div>;
+  }
+
   return (
+    toast &&
     toast.toastInfo && (
       <ToastContainer>
         <h2>Error</h2>
-        <p>{toast.toastInfo}</p>
+        <p>
+          {toast.toastInfo || "An error occurred please try again in a while"}
+        </p>
       </ToastContainer>
     )
   );
