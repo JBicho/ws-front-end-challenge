@@ -10,7 +10,7 @@ function ProvideToast({ children }) {
 }
 
 ProvideToast.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.any,
 };
 
 export default ProvideToast;

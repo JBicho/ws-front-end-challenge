@@ -84,9 +84,11 @@ function LaunchDetails() {
 
   useEffect(() => {
     if (!selectedMission) {
-      const missionList = JSON.parse(sessionStorage.getItem("missionList"));
+      const missionList = JSON.parse(
+        window.sessionStorage.getItem("missionList")
+      );
       const mission = missionList[id];
-      const missionImages = mission.ships.map((obj) => obj.image);
+      const missionImages = mission && mission.ships.map((obj) => obj.image);
 
       setActiveImage(missionImages[0]);
       setSlideImages(missionImages);
@@ -163,10 +165,7 @@ function LaunchDetails() {
       </Article>
     </section>
   ) : (
-    <h1>
-      No data available for this mission.
-      <br /> Please try again in a bit
-    </h1>
+    <h1>No data available for this mission. Please try again in a bit</h1>
   );
 }
 
